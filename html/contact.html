@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - TheFoodHub</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../images/logo-website.png" type="image/png" sizes="32x32">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="logo">The Food<span>Hub</span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="reservation.html">Reservation</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="cart-btn" aria-label="View order">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.5 3h2l2.68 12.39a2 2 0 0 0 2 1.61h8.64a2 2 0 0 0 2-1.61L22 6.5H6"/></svg>
+        <span class="cart-badge">0</span>
+      </button>
+      <a href="reservation.html" class="btn btn-primary">Book a Table</a>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Get In Touch</span>
+    <h1>Contact Us</h1>
+  </div>
+</section>
+
+<section>
+  <div class="container contact-grid">
+    <div>
+      <div class="info-list">
+
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div><h4>Address</h4><p>123 Riverside Street, Phnom Penh, Cambodia</p></div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div><h4>Phone</h4><p>+855 123 456 789</p></div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">📧</div>
+          <div><h4>Email</h4><p>thefood.hub@gmail.com</p></div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">🕒</div>
+          <div><h4>Opening Hours</h4><p>Weekday: 9am–10pm &nbsp;|&nbsp; Weekend: 10am–11pm</p></div>
+        </div>
+
+      </div>
+      <div class="map-frame">
+        <iframe src="https://maps.google.com/maps?q=Phnom%20Penh&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" loading="lazy" title="Restaurant location map"></iframe>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <form id="contactForm" novalidate>
+
+        <div class="form-group">
+          <label for="c-name">Full Name</label>
+          <input type="text" id="c-name" name="name" placeholder="Your name" required>
+          <span class="form-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="c-email">Email Address</label>
+          <input type="email" id="c-email" name="email" placeholder="you@example.com" required>
+          <span class="form-error"></span>
+        </div>
+        
+        <div class="form-group">
+          <label for="c-message">Message</label>
+          <textarea id="c-message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+          <span class="form-error"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+</body>
+</html>

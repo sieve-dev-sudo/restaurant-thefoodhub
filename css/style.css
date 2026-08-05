@@ -936,6 +936,22 @@ section { padding: 64px 0; }
 .form-group.invalid select,
 .form-group.invalid textarea { border-color: var(--primary); }
 
+.form-success {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: #eaf6ec;
+  border: 1px solid #bfe3c6;
+  color: #1e7a34;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-success.show { display: flex; }
+
 /* ============ CONTACT INFO CARDS ============ */
 .contact-grid {
   display: grid;

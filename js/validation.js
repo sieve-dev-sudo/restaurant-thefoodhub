@@ -72,6 +72,12 @@ document.addEventListener('DOMContentLoaded', function () {
     return 'RSV-' + Math.floor(100000 + Math.random() * 900000);
   }
 
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
   function guestLabel(value) {
     if (!value) return '';
     return value === '1' ? '1 Guest' : (value.indexOf('+') > -1 ? value + ' Guests' : value + ' Guests');
@@ -103,12 +109,12 @@ document.addEventListener('DOMContentLoaded', function () {
         '<div class="invoice-box" style="margin:20px 0 0;">' +
           '<div class="invoice-row head"><span>Booking Ref</span><span>#' + code + '</span></div>' +
           '<div class="invoice-divider"></div>' +
-          row('Name', name) +
-          row('Phone', phone) +
+          row('Name', escapeHtml(name)) +
+          row('Phone', escapeHtml(phone)) +
           row('Date', dateDisplay) +
           row('Time', time) +
           row('Guests', guestLabel(guests)) +
-          (notes ? '<div class="invoice-divider"></div><div class="invoice-row"><span>Notes</span><span style="text-align:right;max-width:60%;">' + notes + '</span></div>' : '') +
+          (notes ? '<div class="invoice-divider"></div><div class="invoice-row"><span>Notes</span><span style="text-align:right;max-width:60%;">' + escapeHtml(notes) + '</span></div>' : '') +
         '</div>' +
       '</div>' +
       '<div class="invoice-actions">' +
@@ -130,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
           '<div class="order-confirm">' +
             '<div class="confirm-icon">✓</div>' +
             '<h3>Table Reserved!</h3>' +
-            '<p>Thank you, ' + (name || 'guest') + '. We\'ve saved your table for ' + (dateDisplay || 'your chosen date') + (time ? ' at ' + time : '') + '. See you soon!</p>' +
+            '<p>Thank you, ' + escapeHtml(name || 'guest') + '. We\'ve saved your table for ' + (dateDisplay || 'your chosen date') + (time ? ' at ' + time : '') + '. See you soon!</p>' +
           '</div>' +
         '</div>';
       window.FoodHubDrawer.openWithContent(confirmHtml);

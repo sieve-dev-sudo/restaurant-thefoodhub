@@ -14,11 +14,12 @@
 
 ## ✨ Features
 
-- 🍕 ម៉ឺនុយចែកតាមប្រភេទ **Pizza / Burger / Pasta / Drink** អាច Filter បានភ្លាមៗ
-- 🛒 កន្ត្រកកម្មង់ (Cart) សម្រាប់ Add, កែចំនួន, លុប និងមើល Invoice
-- 📅 Form កក់តុ (Reservation) និង Form ទំនាក់ទំនង (Contact) មាន Validation
-- 📱 Responsive ពេញលេញ គ្រប់ទំហំអេក្រង់ (Mobile / Tablet / Desktop)
-- 🎨 Navbar មាន Hamburger Menu និង Scroll-to-top
+- ម៉ឺនុយចែកតាមប្រភេទ **Pizza / Burger / Pasta / Drink** អាច Filter បានភ្លាមៗ
+- កន្ត្រកកម្មង់ (Cart) សម្រាប់ Add, កែចំនួន, លុប និងមើល Invoice
+- Wishlist (បេះដូង) សម្រាប់រក្សាទុកម្ហូបចូលចិត្ត និង Add to Cart ពី Wishlist បានផ្ទាល់
+- Form កក់តុ (Reservation) និង Form ទំនាក់ទំនង (Contact) មាន Validation
+- Responsive ពេញលេញ គ្រប់ទំហំអេក្រង់ (Mobile / Tablet / Desktop)
+- Navbar មាន Hamburger Menu និង Scroll-to-top
 
 ## 📁 Project Structure
 
@@ -38,9 +39,21 @@ Restaurant-TheFoodHub/
 │   └── drinks/
 ├── js/
 │   ├── cart.js            → កន្ត្រកកម្មង់ (Add/Remove/Checkout)
+│   ├── wishlist.js        → Wishlist (Add/Remove/View)
 │   ├── filter.js          → រើសមើលម៉ឺនុយតាមប្រភេទ
 │   ├── script.js          → Navbar, Hamburger, Scroll-to-top
 │   └── validation.js      → ត្រួតពិនិត្យ Form
 ├── index.html             → ទំព័រដើម
 └── README.md
 ```
+
+---
+
+## 🚀 How to Run
+
+1. Clone ឬ Download Repository នេះ:
+```bash
+   git clone <repo-url>
+```
+2. បើកឯកសារ `index.html` ដោយ Browser ណាមួយ (Chrome, Firefox...)
+3. រកមើលម៉ឺនុយ, បន្ថែមទៅកន្ត្រកកម្មង់, រួចសាកល្បង Form កក់តុ ឬ ទំនាក់ទំនង

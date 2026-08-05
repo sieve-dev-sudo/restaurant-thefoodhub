@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function openDrawer() {
+    if (window.FoodHubWishlist) window.FoodHubWishlist.close();
     overlay.classList.add('open');
     drawer.classList.add('open');
     renderDrawer();

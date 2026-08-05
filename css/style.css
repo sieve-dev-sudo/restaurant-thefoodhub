@@ -193,7 +193,7 @@ section { padding: 64px 0; }
   gap: 20px; 
 }
 
-.cart-btn {
+.cart-btn, .wishlist-nav-btn {
   position: relative;
   display: flex;
   align-items: center;
@@ -208,10 +208,27 @@ section { padding: 64px 0; }
   transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.cart-btn svg { display: block; }
-.cart-btn:hover { border-color: var(--primary); color: var(--primary); }
+.cart-btn svg, .wishlist-nav-btn svg { display: block; }
+.cart-btn:hover, .wishlist-nav-btn:hover { border-color: var(--primary); color: var(--primary); }
 
 .cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.wishlist-badge {
   position: absolute;
   top: -6px;
   right: -6px;
@@ -339,7 +356,7 @@ section { padding: 64px 0; }
 
 .cart-item {
   display: grid;
-  grid-template-columns: 1fr 90px 60px;
+  grid-template-columns: 1fr 90px 62px;
   align-items: center;
   column-gap: 14px;
   padding: 20px 0;
@@ -390,6 +407,21 @@ section { padding: 64px 0; }
   border: none;
   font-family: var(--font-body);
   justify-self: end;
+}
+
+/* ---- Wishlist drawer item row: name/price | Add to Cart | Remove ---- */
+.wishlist-item {
+  grid-template-columns: 1fr auto auto;
+}
+
+.wishlist-add-btn {
+  padding: 10px 18px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.wishlist-item .remove-link {
+  justify-self: start;
 }
 
 .remove-link:hover { text-decoration: underline; }
@@ -674,6 +706,28 @@ section { padding: 64px 0; }
   padding: 5px 10px;
   border-radius: 30px;
 }
+
+.wishlist-btn {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--dark);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, color 0.2s ease;
+  z-index: 2;
+}
+
+.wishlist-btn:hover { transform: scale(1.08); }
+.wishlist-btn svg { display: block; transition: fill 0.2s ease, stroke 0.2s ease; }
+.wishlist-btn.active { color: var(--primary); }
+.wishlist-btn.active svg { fill: var(--primary); }
 
 /* ============ FOOD VISUAL — illustrated placeholders (no external images) ============ */
 .food-visual {

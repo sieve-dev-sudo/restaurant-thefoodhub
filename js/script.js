@@ -1,5 +1,5 @@
 // ============================================
-// THE FOOD HUB — Core Script
+// THE FOOD HUB - Core Script
 // Sticky Navbar / Mobile Menu / Scroll To Top / Active Link
 // ============================================
 
@@ -54,9 +54,27 @@ document.addEventListener('DOMContentLoaded', function () {
   const heroTypewriter = document.getElementById('heroTypewriter');
   if (heroTypewriter) {
     const textEl = heroTypewriter.querySelector('.typewriter-text');
-    const plainPart = 'Welcome to ';
-    const emphasisPart = 'The Food Hub';
-    const fullLength = plainPart.length + emphasisPart.length;
+
+    // Heading text for each language (the brand name stays in English).
+    // In Khmer the brand name always starts on its own second line, so "The Food Hub" is never split.
+    const HEADINGS = {
+      en: { plain: 'Welcome to ', emphasis: 'The Food Hub', lineBreak: false },
+      km: { plain: 'សូមស្វាគមន៍មកកាន់ ', emphasis: 'The Food Hub', lineBreak: true }
+    };
+
+    let plainPart = '';
+    let emphasisPart = '';
+    let breakHtml = '';
+    let fullLength = 0;
+
+    function loadHeading() {
+      const lang = document.documentElement.lang === 'km' ? 'km' : 'en';
+      plainPart = HEADINGS[lang].plain;
+      emphasisPart = HEADINGS[lang].emphasis;
+      breakHtml = HEADINGS[lang].lineBreak ? '<br>' : '';
+      fullLength = plainPart.length + emphasisPart.length;
+    }
+    loadHeading();
 
     const TYPE_SPEED = 55;
     const DELETE_SPEED = 30;
@@ -69,20 +87,41 @@ document.addEventListener('DOMContentLoaded', function () {
     // Lock the heading's height to its fully-typed size first, so the
     // hero-visual (pizza image) never shifts up/down while typing/deleting.
     function lockHeight() {
-      textEl.innerHTML = plainPart + '<em>' + emphasisPart + '</em>';
+      textEl.innerHTML = plainPart + breakHtml + '<em>' + emphasisPart + '</em>';
       const fullHeight = heroTypewriter.getBoundingClientRect().height;
       heroTypewriter.style.minHeight = fullHeight + 'px';
       textEl.textContent = '';
     }
     lockHeight();
 
+    // Measure again without losing the text that is already typed
+    // (used after web fonts finish loading and when the window is resized)
+    function relockHeight() {
+      const typedNow = textEl.innerHTML;
+      heroTypewriter.style.minHeight = '0px';
+      lockHeight();
+      textEl.innerHTML = typedNow;
+    }
+
+    // The first measurement can happen before the web fonts load, which gives a wrong height
+    if (document.fonts) {
+      document.fonts.addEventListener('loadingdone', relockHeight);
+    }
+    window.addEventListener('load', relockHeight);
+
     let resizeTimeout;
     window.addEventListener('resize', function () {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(function () {
-        heroTypewriter.style.minHeight = '0px';
-        lockHeight();
-      }, 200);
+      resizeTimeout = setTimeout(relockHeight, 200);
+    });
+
+    // Restart the typing with the new text when the language is switched
+    document.addEventListener('foodhub:langchange', function () {
+      loadHeading();
+      heroTypewriter.style.minHeight = '0px';
+      lockHeight();
+      charIndex = 0;
+      isDeleting = false;
     });
 
     function renderTypewriter() {
@@ -90,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
         textEl.textContent = plainPart.slice(0, charIndex);
       } else {
         const emphasisShown = emphasisPart.slice(0, charIndex - plainPart.length);
-        textEl.innerHTML = plainPart + '<em>' + emphasisShown + '</em>';
+        textEl.innerHTML = plainPart + breakHtml + '<em>' + emphasisShown + '</em>';
       }
     }
 

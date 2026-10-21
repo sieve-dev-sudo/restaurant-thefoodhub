@@ -6,6 +6,20 @@
   <title>Menu - TheFoodHub</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="icon" href="../images/logo-website.png" type="image/png" sizes="32x32">
+<script>
+  /* Khmer is the default language. Apply it (or a saved English choice) before the page paints,
+     so the page never flashes the wrong language first. */
+  (function () {
+    var lang = 'km';
+    try { if (localStorage.getItem('foodhub-lang') === 'en') lang = 'en'; } catch (e) { /* storage blocked */ }
+    var h = document.documentElement;
+    h.lang = lang;
+    if (lang === 'km') {
+      h.classList.add('lang-loading');
+      setTimeout(function () { h.classList.remove('lang-loading'); }, 1500);
+    }
+  })();
+</script>
 </head>
 <body>
 
@@ -28,7 +42,10 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.5 3h2l2.68 12.39a2 2 0 0 0 2 1.61h8.64a2 2 0 0 0 2-1.61L22 6.5H6"/></svg>
         <span class="cart-badge">0</span>
       </button>
-      <a href="reservation.html" class="btn btn-primary">Book a Table</a>
+      <div class="lang-switch" role="group" aria-label="Switch language">
+        <button type="button" class="lang-opt" data-lang="km" aria-pressed="true"><span class="lang-full">ភាសាខ្មែរ</span><span class="lang-short">ខ្មែរ</span></button>
+        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false"><span class="lang-full">English</span><span class="lang-short">EN</span></button>
+      </div>
       <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -233,6 +250,7 @@
 <script src="../js/cart.js"></script>
 <script src="../js/wishlist.js"></script>
 <script src="../js/filter.js"></script>
+<script src="../js/lang.js"></script>
 
 </body>
 </html>

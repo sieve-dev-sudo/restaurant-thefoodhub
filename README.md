@@ -80,3 +80,9 @@ Restaurant-TheFoodHub/
 
 2. បើកឯកសារ `index.html` ដោយ Browser ណាមួយ (Chrome, Firefox...)
 3. រកមើលម៉ឺនុយ, បន្ថែមទៅកន្ត្រកកម្មង់, ប្តូរភាសា, រួចសាកល្បង Form កក់តុ ឬទំនាក់ទំនង។
+
+---
+
+## 👤 Author
+
+**Built with ❤️ and code by Mr. Sieve E**
